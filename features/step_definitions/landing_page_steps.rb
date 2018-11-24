@@ -17,11 +17,11 @@ And("show me the page") do
   end
 
   Given("I visit the {string} page") do |string|
-    visit root_path
+    visit articles_index_path
   end
   
   When("I click {string} link") do |string|
-    visit root_path
+    
   end
   
   When("I fill in {string} with {string}") do |string, string2|
