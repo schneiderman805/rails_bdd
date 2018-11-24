@@ -1,5 +1,6 @@
 <% @articles.each do |article| %>
   <p><%= article.title %></p>
   <p><%= article.content %></p>
+  <%= link_to "New Article", root_path %>
 <% end %>
 
