@@ -12,12 +12,17 @@ class ArticlesController < ApplicationController
     #creat a new article in the datatbase, using the data from the form 
     #this a hacky way, i should use srong parameters/santitized parameters
     article = Article.new(title: params["article"]["title"],content: params["article"]["content"])
-    #show the page for that specific atricle that i just created
     if article.save
-      #render the article
+      render new_article_path
+      flash[:success] = 'Article was successfully created.'
+      
     else
-       #display a message and display the form again 
+      flash[:error] = 'Error' 
     end
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 
 end

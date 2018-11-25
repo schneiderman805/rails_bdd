@@ -3,5 +3,5 @@ Then("I should see {string}") do |content|
   end
 
   Then("I should be on {string} page") do |string|
-    pending # Write code here that turns the phrase above into concrete actions
+    expect(current_path).to eq articles_path
   end
