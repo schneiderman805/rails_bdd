@@ -4,25 +4,29 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
   end
 
   def create
     #binding.pry
   
-    #creat a new article in the datatbase, using the data from the form 
+    @article = Article.new(article_params) 
     #this a hacky way, i should use srong parameters/santitized parameters
-    article = Article.new(title: params["article"]["title"],content: params["article"]["content"])
-    if article.save
-      render new_article_path
-      flash[:success] = 'Article was successfully created.'
-      
+    #article = Article.new(title: params["article"]["title"],content: params["article"]["content"])
+    if @article.save
+      flash[:notice] = 'Article was successfully created.'
+      redirect_to @article
+       
     else
-      flash[:error] = 'Error' 
+      render "new" 
     end
   end
 
   def show
     @article = Article.find(params[:id])
   end
-
+  privet
+    def article_params
+      params.require(:article).permit(:title, :content)
+    end
 end
